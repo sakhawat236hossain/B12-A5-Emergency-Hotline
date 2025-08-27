@@ -1,4 +1,3 @@
-
 // funtion getElementById
 function getInnerText(id) {
   const element = document.getElementById(id);
@@ -27,18 +26,12 @@ let coinNumber = 100;
 const coinElement = document.getElementById("coin-amount");
 coinElement.innerText = coinNumber;
 
-// const callBtns = document.getElementsByClassName("call-btn");
-// const cardTitle = document.getElementsByClassName('card-title')
-// const cardTitleInnerText = cardTitle.innerText
-// const cardNumber = document.getElementsByClassName('card-number')
-// // const cardNumberInnerText =cardNumber.inn
-// console.log(cardNumber,cardTitle);
 const callBtns = document.getElementsByClassName("call-btn");
 for (const callBtn of callBtns) {
   callBtn.addEventListener("click", function () {
- let cardParent = callBtn.parentNode.parentNode;
+    let cardParent = callBtn.parentNode.parentNode;
 
-    const cardTitle = cardParent.querySelector(".card-title").innerText
+    const cardTitle = cardParent.querySelector(".card-title").innerText;
     const cardNumber = cardParent.querySelector(".card-number").innerText;
     if (coinNumber >= 20) {
       alert(`${cardTitle}\n${cardNumber}`);
@@ -49,25 +42,38 @@ for (const callBtn of callBtns) {
         "You don't have enough coins. You need at least 20 coins to make a call."
       );
     }
-    const historyContainar = document.getElementById("add-history")
-    const newHeistory = document.createElement("div")
-     const newdate = new Date();
-     const time = newdate.toLocaleString();
+    const historyContainar = document.getElementById("add-history");
+    const newHeistory = document.createElement("div");
+    const newdate = new Date();
+    const time = newdate.toLocaleString();
 
     newHeistory.innerHTML = `
       <div class="mt-4 bg-amber-50">
              <div class="flex justify-between items-center">
              <div>
-              <h1 class="font-bold">${cardTitle }</h1>
+              <h1 class="font-bold">${cardTitle}</h1>
               <p class="font-bold">${cardNumber}</p>
              </div>
               <p>${time}</p>
             </div>
          </div>
     `;
-    historyContainar.append(newHeistory)
+    historyContainar.append(newHeistory);
+  });
+}
+
+// copy button section
+
+const copyBtns = document.getElementsByClassName("copy-btn");
+let copyAmountElement = document.getElementById("copy-amount");
+let copuCount = 0;
+for (const copyBtn of copyBtns) {
+  copyBtn.addEventListener("click", function () {
+    let cardParent = copyBtn.parentNode.parentNode;
+    const cardNumber = cardParent.querySelector(".card-number").innerText;
+    navigator.clipboard.writeText(cardNumber);
+    copuCount++;
+    copyAmountElement.innerText = copuCount;
     
   });
-
-
 }
