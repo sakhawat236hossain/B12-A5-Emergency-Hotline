@@ -34,7 +34,7 @@ for (const callBtn of callBtns) {
     const cardTitle = cardParent.querySelector(".card-title").innerText;
     const cardNumber = cardParent.querySelector(".card-number").innerText;
     if (coinNumber >= 20) {
-      alert(`${cardTitle}\n${cardNumber}`);
+      alert(`📞${cardTitle}/${cardNumber}`);
       coinNumber -= 20;
       coinElement.innerText = coinNumber;
     } else {
@@ -61,6 +61,13 @@ for (const callBtn of callBtns) {
     historyContainar.append(newHeistory);
   });
 }
+
+// clear button
+const clearBtn = document.getElementById('clear-history btn');
+clearBtn.addEventListener('click',function(){
+  const historyContainar =document.getElementById('add-history');
+  historyContainar.innerHTML = "";
+})
 
 // copy button section
 

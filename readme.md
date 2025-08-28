@@ -1,165 +1,80 @@
-## WELCOME TO ( সহজ সরল সিম্পল ) ASSIGNMENT-005
 
-### 📅 Deadline For 60 marks: 29th August, 2025 (11:59 pm ⏱️)
+ # Question:-(1) What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
-### 📅 No Deadline For 50 marks
+  # Answer = (1)
 
-### 📅 Deadline For 30 marks: Any time after 29th August.
+১. getElementById > এটি একটি উপাদান প্রদান করে। প্রতিটি নামের (ID) জন্য প্রতি পৃষ্ঠায় শুধুমাত্র একটি উপাদান থাকে।উদাহরণ =document.getElementById("title")
+ ২. getElementsByClassName > এটি একসাথে একাধিক উপাদান প্রদান করে। উদাহরণ =document.getElementsByClassName("card") 
+ ৩. querySelector > এটি (css) এর মতো কাজ করে । সবার প্রথমে যেটা পাবে ওটাই ফেরত দিবে। চাই সেটা (ID) হোক বা ক্লাস (class ) । তবে এটা বেবহার করার সময় যদি (ID) হয় তাহলে (#)দিয়ে বেবহার করতে হবে। আর যদি এটা (class ) হয় তাহলে শুরুতে (.) বেবহার করতে হবে । না হয় কাজ করবেন । উদাহরণ =document.querySelector(".card") document.querySelector("#title")
+  ৪. querySelectorAll > একই নাম যত ক্লাস পাবে সব গুলোকেই ফেরত দিবে । এটা (ID) নিবেন শুধু ক্লাস। ক্লাস বেবহার সময় (.)এটা দিয়ে বেবহার করতে হবে । উদাহরণ = document.querySelectorAll(".card")
 
----
 
-## ✅ Main Requirements (50 Marks)
+ # Question:-(2) How do you create and insert a new element into the DOM?
 
-### 1. Navbar
 
-- **Website name & logo** on the left as Figma
-- **Heart icon, coin count (default-100), and Copy Count** on the right as Figma
+  # Answer = (2)
 
----
+DOM-এ একটি নতুন উপাদান তৈরি এবং সন্নিবেশ করার জন্য ৩টি ধাপ রয়েছে।
+1.document.createElement("div ") এখানে  যেটা বানাবে ঐটার ট্যাগ নাম দিতে হবে যেমন (div,li,h1)
+২.ওই এলিমেন্ট এ চাইলে যেকোনো কিসু অ্যাড করা যায় যেমন  (text / class / id / style)  যেমন newDiv.innerText = "Hello!";
+৩.অবশেষে এটা append() করতে হবে । যেখানে দেখতে চাই । তার পেরেন্ট কে ধরে নতুন যে এলিমেন্ট বানানো হইসে সেটাকে Add করে দিতে হবে । যেমন  document.body.appendChild(newDiv);
+(এখানে নতুন একটা div বানানো হলো ওটাকে  body তে append করা হলো  )\
 
-### 2. Hero Section
 
-- **Background Gradient** in the Whole Section
-- **A Relevant Logo** at the top-center
-- **Section Title** in the center
-- **A Relevant Slogan** in the bottom Center
 
----
+ # Question:-(3) What is Event Bubbling and how does it work?
 
-### 2. Main Section
 
-This Section will have layout as figma
+  # Answer = (3)
 
-<table border=1 width="100%" cellpadding="50">
-<tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
- </tr>
- <tr>
-    <td colspan=9 >Card Section</td>
-    <td colspan=3>History Section</td>
- </tr>
-</table>
+ Event Bubbling মানে হলো একটা child element এ ইভেন্ট ঘটলে সেটা প্রথমে সেখানে কাজ করে, তারপর তার parent → তার parent  এভাবে যত ক্ষন শেষ হয়নি এভাবে উপরে উঠতে থাকবে সবশেষে document পর্যন্ত উপরে উঠতে থাকে। এর পরে বন্ধ হয়ে যাবে । 
+ যদি button এ ক্লিক করা হয় :
 
-### Emergency Hotline Section
+১.আগে child button এর ইভেন্ট কাজ করবে
 
-- **Show Minimum 6 cards**. Each card will contain:
-  - Icon or Image
-  - Relevant Name
-  - Relevant Name in English
-  - Hotline number for calling
-  - Category Badge
-  - 💗 icon at left
-  - **2 buttons** at the bottom: Copy and Call with icons as Figma
+২.তারপর parent div এর ইভেন্ট
 
-### History Section
+৩.তারপর body এর ইভেন্ট
+এভাবেই ইভেন্ট bubble হয়ে উপরে যায়
+ ইভেন্ট থামাতে চাইলে এটা বেবহার করতে হয় stopPropagation()
 
-- **A white Background** in the whole section
-- **History Title with icon** at the top-left as Figma
-- **Clear History Button** at the top-right as Figma
 
----
 
-### 3. Responsiveness (5 Marks)
+ # Question:-(4) What is Event Delegation in JavaScript? Why is it useful?
 
-- Website should be fully **responsive for mobile devices** (implementation up to you)
 
----
 
-## Functionalities
+  # Answer = (4)
 
-### 4. Heart Icons
+# Event Delegation কী?
 
-- Clicking on the 💗 **heart icon** of any card will increase the count in the Navbar
+Event Delegation হলো —
+আমরা যখন অনেকগুলো ছোট ছোট এলিমেন্টে (child) ইভেন্ট বসাতে চাই, তখন প্রত্যেকটাতে আলাদা addEventListener() না বসিয়ে, তাদের parent element-এ একটি মাত্র ইভেন্ট লিসেনার বসাই।
+তারপর ইভেন্ট বাবলিং ব্যবহার করে বোঝা যায় আসলে কোন child এ ক্লিক হয়েছে।
 
----
+# কেন Event Delegation কার্যকর?
 
-### 5. Call Buttons
+১.কম কোডে কাজ হয় – একবার parent এ বসালেই সব child কভার হয়।
 
-- On clicking a card's **Call Button**, following actions will happen:
-  - Show an **alert** with a message including the service name and number
-  - Each call will **cut 20 coins**. Reduce Coin after each click.
-  - If coins are less than 20, show a relevant alert and terminate the process.
-  - Add this service into the **Call History section** with:
-    - Service name
-    - Service number
+২.পারফরম্যান্স ভালো – অনেকগুলো ইলিমেন্টে আলাদা আলাদা লিসেনার বসাতে হয় না।
 
----
+৩.ডাইনামিক এলিমেন্টেও কাজ করে – পরে যদি নতুন li যোগ করা হয়, parent এর লিসেনার তখনো কাজ করবে।
 
-### 5. Call History Section
 
-- Show all called services with name & number. This will empty initially. when call button clicked it will filled dynamically.
-- A **Clear History button** on the right
-- Clicking this button will remove all data from call history
+ # Question:-(5) What is the difference between preventDefault() and stopPropagation() methods?
 
----
 
-## Create Readme
+  # Answer = (5)
 
-You have to create a `Readme.md` file. and write down following questions. Dont Try to copy paste from AI Tools. Just write what you know about these. If you don't know , then search , learn , understand and then write.
+১.preventDefault()
 
-### 6. Answer the following questions clearly:
+কাজ: কোনো ইভেন্টের  (default behavior) বন্ধ করে।
+যেমন:
+একটি form সাবমিট করলে সাধারণত পেজ রিফ্রেশ হয় → preventDefault() দিলে সেটা হবে না।
 
-1. What is the difference between **getElementById, getElementsByClassName, and querySelector / querySelectorAll**?
-2. How do you **create and insert a new element into the DOM**?
-3. What is **Event Bubbling** and how does it work?
-4. What is **Event Delegation** in JavaScript? Why is it useful?
-5. What is the difference between **preventDefault() and stopPropagation()** methods?
 
----
+২. stopPropagation()
 
-## 🧪 Challenges Part (10 Marks)
+কাজ: Event Bubbling  বা  ক্যাপচারিং বন্ধ করে।
 
-- On clicking the **Copy button**, show an alert and **increase the copy count** (3 Marks)
-
-- Hotline number will be **copied on click** so it can be pasted anywhere (4 Marks)
-
-💡Hint: You can ask for Help from `ChatGPT` Mamma . Just copy the below prompt , generate answer. use it with your own way.
-
-```bash
-I have a card with some text and a button inside it. I want that when a user clicks the button, some specific text from the card is copied to the clipboard using JavaScript. Please provide the code and explain it step by step.
-```
-
-- After clicking on the **Call button**, the **exact time of the call** will be shown in the Call History section (3 Marks)
-
-💡Hint: Search Google with that below question
-
-```bash
-How to get current local time in js
-```
-
----
-
-## ⚙️ Technology Stack
-
-- HTML
-- CSS ( Vanilla , Tailwind CSS , DaisyUI , Others - wheatever you like )
-- JavaScript ( Vanilla only. No Framework / Library Allowed )
-
----
-
-## 📌 Rules
-
-- ✅ Minimum **5 meaningful commits** required
-- ❌ No Lorem Ipsum or dummy placeholder text. Use **relevant content only**
-
----
-
-## 🔗 What to Submit
-
-- 📂 **GitHub Repository**
-- 🌐 **Live Link**
-
----
-
-# Let's Code and Achieve your Dream 🎯
+অর্থাৎ ইভেন্ট আর উপরের parent element-এ যাবে না।
