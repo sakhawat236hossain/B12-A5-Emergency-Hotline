@@ -34,7 +34,7 @@ for (const callBtn of callBtns) {
     const cardTitle = cardParent.querySelector(".card-title").innerText;
     const cardNumber = cardParent.querySelector(".card-number").innerText;
     if (coinNumber >= 20) {
-      alert(`📞${cardTitle}/${cardNumber}`);
+      alert(`📞Calling ${cardTitle}/${cardNumber}`);
       coinNumber -= 20;
       coinElement.innerText = coinNumber;
     } else {
